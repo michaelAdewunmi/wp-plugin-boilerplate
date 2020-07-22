@@ -1,7 +1,7 @@
 {
     "name": "plugin-name/plugin-name",
     "type": "wordpress-plugin",
-    "description": "A plugin to Track Law suit case progress",
+    "description": "A plugin to capture custom data and export to an excel file on demand",
     "license": "MIT",
     "minimum-stability": "dev",
     "require": {

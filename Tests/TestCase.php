@@ -13,5 +13,4 @@ use PHPUnit\Framework\TestCase as FrameworkTestCase;
  */
 abstract class TestCase extends FrameworkTestCase
 {
-	//We'll put shared code for all tests here later
 }

@@ -1,5 +1,8 @@
-# Plugin BoilerPlate for Plugin Developers.
+# WordPress Plugin BoilerPlate for Plugin Developers.
 A personal boilerplate that uses composer and docker to make plugin development faster
+
+## Prerequisite
+You must know what this boilerplate is meant for before you use it. Please refer to these tutorials to understand how to use this plugin boilerplate
 
 ### Thanks to these people for their awesome tutorials and free boilerplates that helped me build this.
  * Thanks to [DevInvision](https://github.com/DevinVinson/Plugin-Directory-Boilerplate) which is what my boilerplate is built into.
@@ -13,14 +16,16 @@ A personal boilerplate that uses composer and docker to make plugin development 
 ## Installation Guide
 Before using this boilerplate, You are to do the following;
 
-1. Perform a global search for "PluginName" and replace it with the namespace of your plugin.
+1. Perform a global search for "PluginNameSpace" and replace it with the namespace of your plugin.
 
 2. Also, do a global search for "plugin-name" and replace it with the name of your plugin.
 
 3. Also, do a global search for "plugin_name" and replace it with the name of the plugin file.
 
-4. Change the name of the file serving as the entry point of the plugin - plugin-name.php to your actual plugin name.
+4. Do a global search of "virtualhostname" and replace it with the virtualhost name you will prefer.
 
-4. Then Run the command "composer dump-autoload"
+5. Find the file serving as the entry point of the plugin (plugin-name.php found in the root of this project) and change the name to the actual name of the plugin you are to create.
+
+6. Then Run the command "composer dump-autoload"
 
 HOORAY! Now, You're good to go. Happy Coding!

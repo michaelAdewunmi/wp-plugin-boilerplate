@@ -5,7 +5,7 @@
 
     Installation!
     Before using this boilerplate, You are to do the following;
-    1. Please perform a global search for "PluginName" and replace it with the namespace of your plugin.
+    1. Please perform a global search for "PluginNameSpace" and replace it with the namespace of your plugin.
 
     2. Also, do a global search for "plugin-name" and replace it with the name of the plugin file.
 

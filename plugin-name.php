@@ -6,21 +6,21 @@
  * that starts the plugin.
  *
  * @wordpress-plugin
- * Plugin Name:       Plugin Name
- * Plugin URI:        http://github.com/josbiz/boilerplate
- * Description:       Your Plugin description
+ * Plugin Name:       Josbiz Custom Data Capture
+ * Plugin URI:        http://josbiz.com.ng/plugin-name
+ * Description:       A Plugin to capture data via forms and convert to excel on demand
  * Version:           1.0.0
- * Author:            Josbiz
- * Author URI:        http://github.com/michaelAdewunmi
+ * Author:            Josbiz Technologies
+ * Author URI:        https://josbiz.com.ng
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:       plugin-text-domain
+ * Text Domain:       josbiz-plugin-name
  * Domain Path:       /languages
  *
  * @category   Plugins
  * @package    WordPress
  * @subpackage WordPress/Plugins
- * @author     Michael Adewunmi <d.devignersplace@gmail.com>
+ * @author     JOSBIZ <d.devignersplace@gmail.com>
  * @license    GPL-2.0+ http://www.gnu.org/licenses/gpl-2.0.txt
  * @link       http://josbiz.com.ng
  * @since      1.0.0

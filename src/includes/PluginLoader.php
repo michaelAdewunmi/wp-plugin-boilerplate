@@ -34,18 +34,18 @@ class PluginLoader
      *
      * @since  1.0.0
      * @access protected
-     * @var    string $plugin_name The string used to uniquely identify this plugin.
+     * @var    string $plugin_slug The string used to uniquely identify this plugin.
      */
-    protected $plugin_name;
+    protected $plugin_slug;
 
     /**
-     * The current version of the plugin.
+     * The current plugin version of the plugin.
      *
      * @since  1.0.0
      * @access protected
-     * @var    string $version The current version of the plugin.
+     * @var    string $plugin_version The current plugin version.
      */
-    protected $version;
+    protected $plugin_version;
 
     /**
      * Define the core functionality of the plugin.
@@ -56,24 +56,24 @@ class PluginLoader
      *
      * @since 1.0.0
      */
-    public function __construct() {
+    public function __construct()
+    {
         if (defined('PLUGIN_VERSION')) {
-            $this->version = PLUGIN_VERSION;
+            $this->plugin_version = PLUGIN_VERSION;
         } else {
-            $this->version = '1.0.0';
+            $this->plugin_version = '1.0.0';
         }
 
         if (defined('PLUGIN_PUBLIC_NAME')) {
-            $this->plugin_name = PLUGIN_PUBLIC_NAME;
+            $this->plugin_slug = PLUGIN_PUBLIC_NAME;
         } else {
             define('PLUGIN_PUBLIC_NAME', 'plugin-name');
-            $this->plugin_name = PLUGIN_PUBLIC_NAME;
+            $this->plugin_slug = PLUGIN_PUBLIC_NAME;
         }
         $this->loadDependencies();
         $this->setLocale();
         $this->defineAdminHooks();
         $this->definePublicHooks();
-
     }
 
     /**
@@ -87,7 +87,6 @@ class PluginLoader
     {
 
         $this->loader = new HooksLoader();
-
     }
 
     /**
@@ -105,7 +104,6 @@ class PluginLoader
         $plugin_i18n = new Plugini18n();
 
         $this->loader->addAction('plugins_loaded', $plugin_i18n, 'loadPluginTextdomain');
-
     }
 
     /**
@@ -118,11 +116,10 @@ class PluginLoader
     private function defineAdminHooks()
     {
 
-        $plugin_admin = new AdminTasks($this->getPluginName(), $this->getVersion());
+        $plugin_admin = new AdminTasks($this->getNameOfPlugin(), $this->getVersion());
 
         $this->loader->addAction('admin_enqueue_scripts', $plugin_admin, 'enqueueStyles');
         $this->loader->addAction('admin_enqueue_scripts', $plugin_admin, 'enqueueScripts');
-
     }
 
     /**
@@ -134,10 +131,14 @@ class PluginLoader
      */
     private function definePublicHooks()
     {
-        $plugin_public = new PublicTasks($this->getPluginName(), $this->getVersion());
+        $plugin_public = new PublicTasks($this->getPluginSlug(), $this->getVersion());
+        $page_templater = new PageAndPostTemplater($this->getPluginSlug(), $this->getVersion());
+        $page_or_post_creator = new PageOrPostCreator($this->getPluginSlug(), $this->getVersion());
 
         $this->loader->addAction('wp_enqueue_scripts', $plugin_public, 'enqueueStyles');
         $this->loader->addAction('wp_enqueue_scripts', $plugin_public, 'enqueueScripts');
+        $this->loader->add_action('plugins_loaded', $page_templater, 'loadAllPageTemplaterSettingsAndFilters');
+        $this->loader->add_action('admin_init', $page_or_post_creator, 'createDataCapturePostsOrPages');
     }
 
     /**
@@ -159,9 +160,9 @@ class PluginLoader
      * @since  1.0.0
      * @return string    The name of the plugin.
      */
-    public function getPluginName()
+    public function getPluginSlug()
     {
-        return $this->plugin_name;
+        return $this->plugin_slug;
     }
 
     /**
@@ -183,6 +184,6 @@ class PluginLoader
      */
     public function getVersion()
     {
-        return $this->version;
+        return $this->plugin_version;
     }
 }

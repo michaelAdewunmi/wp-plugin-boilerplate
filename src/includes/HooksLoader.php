@@ -7,7 +7,7 @@ namespace PluginNameSpace\Includes;
  *
  * @category   Plugins
  * @package    PluginNameSpace
- * @subpackage PluginNameSpace/includes
+ * @subpackage PluginNameSpace/Includes
  * @author     Michael Adewunmi <d.devignersplace@gmail.com>
  * @license    GPL-2.0+ http://www.gnu.org/licenses/gpl-2.0.txt
  * @link       http://josbiz.com.ng
